@@ -1,0 +1,24 @@
+{
+  "name": "Employee-Tracker-mySQL",
+  "version": "1.0.0",
+  "description": "Build a solution for managing a company's employees using node, inquirer, and MySQL. <br><br>",
+  "main": "employeeTracker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrianHdz/Employee-Tracker-mySQL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrianHdz/Employee-Tracker-mySQL/issues"
+  },
+  "homepage": "https://github.com/BrianHdz/Employee-Tracker-mySQL#readme",
+  "dependencies": {
+    "inquirer": "^7.0.4",
+    "mysql": "^2.18.1"
+  }
+}
