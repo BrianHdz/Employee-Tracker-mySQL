@@ -68,3 +68,116 @@ function runSearch() {
             }
         });
 }
+
+function addEmployee() {
+    inquirer
+        .prompt([
+            {
+                name: "firstName",
+                type: "input",
+                message: "What is the employee's first name?"
+            },
+            {
+                name: "lastName",
+                type: "input",
+                message: "What is the employee's last name?"
+            },
+            {
+                name: "role",
+                type: "rawlist",
+                message: "What is the employee's role?",
+                choices: [
+                    "Sales Lead",
+                    "Salesperson",
+                    "Lead Engineer",
+                    "Software Engineer",
+                    "Account Manager",
+                    "Accountant",
+                    "Legal Team Lead"
+                ]
+            },
+        ]).then(function (answer) {
+            connection.query(
+                "INSERT INTO employee_tracker_DB.employee SET ?",
+                {
+                    first_name: answer.firstName,
+                    last_name: answer.lastName,
+                    role_id: answer.role,
+                    manager_id: answer.manager
+                },
+                function (err) {
+                    if (err) throw err;
+                    console.log("Your employee was created successfully!");
+                    runSearch()
+                }
+            )
+        })
+}
+
+function addDepartment() {
+    inquirer.prompt([
+        {
+            name: "dept",
+            type: "rawlist",
+            message: "What department will we assign an ID to?",
+            choices: [
+                "Sales",
+                "Engineering",
+                "Finance",
+                "Legal"
+            ]  
+        },
+        {
+            name: "deptID",
+            type: "input",
+            message: "What will the ID be?" 
+        },
+    ]).then(function (answer) {
+        connection.query(
+            "INSERT INTO employee_tracker_DB.department SET ?",
+            {
+                name: answer.dept,
+                id: answer.deptID
+            },
+            function (err) {
+                if (err) throw err;
+                console.log("Your department was created successfully!");
+                runSearch()
+            }
+        )
+    })
+}
+
+function addDepartment() {
+    inquirer.prompt([
+        {
+            name: "dept",
+            type: "rawlist",
+            message: "What department will we assign an ID to?",
+            choices: [
+                "Sales",
+                "Engineering",
+                "Finance",
+                "Legal"
+            ]  
+        },
+        {
+            name: "deptID",
+            type: "input",
+            message: "What will the ID be?" 
+        },
+    ]).then(function (answer) {
+        connection.query(
+            "INSERT INTO employee_tracker_DB.department SET ?",
+            {
+                name: answer.dept,
+                id: answer.deptID
+            },
+            function (err) {
+                if (err) throw err;
+                console.log("Your department was created successfully!");
+                runSearch()
+            }
+        )
+    })
+}
