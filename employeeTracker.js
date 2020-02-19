@@ -69,6 +69,8 @@ function runSearch() {
         });
 }
 
+
+
 function addEmployee() {
     inquirer
         .prompt([
@@ -114,6 +116,8 @@ function addEmployee() {
         })
 }
 
+
+
 function addDepartment() {
     inquirer.prompt([
         {
@@ -147,6 +151,8 @@ function addDepartment() {
         )
     })
 }
+
+
 
 function addRoles() {
     inquirer.prompt([
