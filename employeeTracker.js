@@ -148,36 +148,70 @@ function addDepartment() {
     })
 }
 
-function addDepartment() {
+function addRoles() {
     inquirer.prompt([
         {
-            name: "dept",
+            name: "roleTitle",
             type: "rawlist",
-            message: "What department will we assign an ID to?",
+            message: "What role will we create?",
             choices: [
-                "Sales",
-                "Engineering",
-                "Finance",
-                "Legal"
+                "Sales Lead",
+                "Salesperson",
+                "Lead Engineer",
+                "Software Engineer",
+                "Account Manager",
+                "Accountant",
+                "Legal Team Lead",
+                "Lawyer"
             ]  
         },
         {
-            name: "deptID",
+            name: "roleSalary",
             type: "input",
-            message: "What will the ID be?" 
+            message: "What will the salary be?" 
         },
     ]).then(function (answer) {
         connection.query(
-            "INSERT INTO employee_tracker_DB.department SET ?",
+            "INSERT INTO employee_tracker_DB.role SET ?",
             {
-                name: answer.dept,
-                id: answer.deptID
+                
+                title: answer.roleTitle,
+                salary: answer.roleSalary
+                
             },
             function (err) {
                 if (err) throw err;
-                console.log("Your department was created successfully!");
+                console.log("New role was created successfully!");
                 runSearch()
             }
         )
     })
 }
+
+
+
+function viewEmployees() {
+    
+        connection.query(
+            "INSERT INTO employee_tracker_DB.role SET ?",
+            {
+                
+                title: answer.roleTitle,
+                salary: answer.roleSalary
+                
+            },
+            function (err) {
+                if (err) throw err;
+                console.log("New role was created successfully!");
+                runSearch()
+            }
+        )
+}
+
+
+
+/*
+viewDepartments()
+viewRoles()
+updateRoles()
+*/
