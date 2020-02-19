@@ -125,12 +125,12 @@ function addDepartment() {
                 "Engineering",
                 "Finance",
                 "Legal"
-            ]  
+            ]
         },
         {
             name: "deptID",
             type: "input",
-            message: "What will the ID be?" 
+            message: "What will the ID be?"
         },
     ]).then(function (answer) {
         connection.query(
@@ -163,21 +163,21 @@ function addRoles() {
                 "Accountant",
                 "Legal Team Lead",
                 "Lawyer"
-            ]  
+            ]
         },
         {
             name: "roleSalary",
             type: "input",
-            message: "What will the salary be?" 
+            message: "What will the salary be?"
         },
     ]).then(function (answer) {
         connection.query(
             "INSERT INTO employee_tracker_DB.role SET ?",
             {
-                
+
                 title: answer.roleTitle,
                 salary: answer.roleSalary
-                
+
             },
             function (err) {
                 if (err) throw err;
@@ -191,21 +191,23 @@ function addRoles() {
 
 
 function viewEmployees() {
-    
+    inquirer.prompt([
+        {
+            name: "allEmployees",
+            type: "input",
+            message: "Press anykey and ENTER to view all employees",
+        },
+    ]).then(function (answer) {
         connection.query(
-            "INSERT INTO employee_tracker_DB.role SET ?",
-            {
-                
-                title: answer.roleTitle,
-                salary: answer.roleSalary
-                
-            },
+            "SELECT first_name, last_name FROM employee_tracker_DB.employee",
+
             function (err) {
                 if (err) throw err;
-                console.log("New role was created successfully!");
+                console.log(answer);
                 runSearch()
             }
         )
+    })
 }
 
 
